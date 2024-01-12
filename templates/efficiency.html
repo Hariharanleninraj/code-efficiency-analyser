@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficiency</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .legend {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        .container {
+            background-color: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1100px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        .output-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .output-container table {
+            flex: 1;
+        }
+        h2:first-of-type, h2:nth-of-type(2){
+            color: #006400;
+        }
+        h2:nth-of-type(1){
+            color: #22bd4b;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #22bd4b;;">Efficiency Calculator</h1>
+    {% block content %}
+    <div class="container mt-4 output-container">
+        <div>
+            <h2>Time complexity of your code is:</h2>
+            {% if time_output %}
+                <table>
+                    <h3>{{time_output}}</h3>
+                </table>
+            {% else %}
+                <h2>No efficiency data found.</h2>
+            {% endif %}
+        </div>
+        <div>
+            <h2>Space complexity of your code is:</h2>
+            {% if space_output %}
+                <table>
+                    <pre><h3>{{space_output}}</h3></pre>
+                </table>
+            {% else %}
+                <h2>No efficiency data found.</h2>
+            {% endif %}
+        </div>
+    </div>
+    <div class ="legend">
+        <h2>Legend</h2>
+        <div style="text-align: center;" >
+            <img src="{% static 'images/Vertical Legend.png' %}" style="max-width: 200%;">
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
